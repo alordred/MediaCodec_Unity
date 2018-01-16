@@ -138,14 +138,14 @@ public class playerController : MonoBehaviour
            
             if (GvrController.IsTouching)
             {
-                animator.SetBool("Idling", false);
+                //animator.SetBool("Idling", false);
 				current_touchpos = GvrController.TouchPos;
 				//Debug.Log(GvrController.TouchPos);
 				//Debug.Log("EasyMovieTextureCsharp, current_touchpos = "+ current_touchpos.x +" , " + current_touchpos.y);
 
 				if ((current_touchpos.y < current_touchpos.x) && (current_touchpos.y < 1 - current_touchpos.x))
 				{
-					Debug.Log("EasyMovieTextureCsharp, current_touchpos = forward");
+					//Debug.Log("EasyMovieTextureCsharp, current_touchpos = forward");
 					mediaPlayerCtrl.setDirection(1);//1
 					return;
 					//if(currentFrameTime%60 == 0){
@@ -155,20 +155,20 @@ public class playerController : MonoBehaviour
 				}
 				else if ((current_touchpos.y < current_touchpos.x) && (current_touchpos.y > 1 - current_touchpos.x))
 				{
-					Debug.Log("EasyMovieTextureCsharp, current_touchpos = right");
+					//Debug.Log("EasyMovieTextureCsharp, current_touchpos = right");
 					mediaPlayerCtrl.setDirection(4);//4
 					return;
 				}
 				else if ((current_touchpos.y > current_touchpos.x) && (current_touchpos.y > 1 - current_touchpos.x))
 				{
-					Debug.Log("EasyMovieTextureCsharp, current_touchpos = backward");
-					mediaPlayerCtrl.setDirection(3);//3
+					//Debug.Log("EasyMovieTextureCsharp, current_touchpos = backward");
+					mediaPlayerCtrl.setDirection(2);//3
 					return;
 				}
 				else if ((current_touchpos.y > current_touchpos.x) && (current_touchpos.y < 1 - current_touchpos.x))
 				{
-					Debug.Log("EasyMovieTextureCsharp, current_touchpos = left");
-					mediaPlayerCtrl.setDirection(2);//2
+					//Debug.Log("EasyMovieTextureCsharp, current_touchpos = left");
+					mediaPlayerCtrl.setDirection(3);//2
 					return;
 				}
             }

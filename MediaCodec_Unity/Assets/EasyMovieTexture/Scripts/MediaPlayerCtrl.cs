@@ -432,10 +432,10 @@ public class MediaPlayerCtrl : MonoBehaviour
 		{
             //Debug.Log("m_CurrentState == MEDIAPLAYER_STATE.PLAYING ||");
 			if (m_bCheckFBO == false) {
-                Debug.Log("m_bCheckFBO == false");
+                //Debug.Log("m_bCheckFBO == false");
 
 				if (Call_GetVideoWidth () <= 0 || Call_GetVideoHeight () <= 0) {
-                    Debug.Log("return");
+                    //Debug.Log("return");
 					return;
 				}
 

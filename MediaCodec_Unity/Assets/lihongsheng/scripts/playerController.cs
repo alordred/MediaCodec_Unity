@@ -48,6 +48,8 @@ public class playerController : MonoBehaviour
     //4 == right
     private int currentDirection = 0;
 
+    private Transform mainCameraTrans;
+
     void Awake()
     {
         attackTimes = 0;
@@ -60,6 +62,7 @@ public class playerController : MonoBehaviour
 
     void Start()
     {
+        mainCameraTrans = Camera.main.transform;
         currentFrameTime = 0;
         count = 0;
         gameController = GameController.GetInstance();
@@ -108,33 +111,44 @@ public class playerController : MonoBehaviour
         if (!gameController.OnComputerDebug)
         {
             //暂时注释
-			//if (GvrController.IsTouching)
-			//{
-			//	animator.SetBool("Idling", false);
-			//	this.transform.position = new Vector3(ts.x, ts.y, ts.z += (Time.deltaTime * playerMoveSpeed));
-			//	mediaPlayerCtrl.Play();
-   //             if(gameController.IsInternetMode)
-   //             {
-			//		count++;
-			//		//Debug.Log("count:" + count);
-			//		if (count % 60 == 0)
-			//		{
-			//			//Debug.Log("DownLoadViking");
-			//			httpManager.DownLoadViking();
-			//		}
-   //             }
-			//}
-			//else
-			//{
-			//	animator.SetBool("Idling", true);
-			//	mediaPlayerCtrl.Pause();
-			//}
-			//if (GvrController.AppButtonDown)
-			//{
-			//	animator.SetTrigger("Use");
-   //             //Debug.Log("GvrController.AppButtonDown");
-			//}
-
+            //if (GvrController.IsTouching)
+            //{
+            //	animator.SetBool("Idling", false);
+            //	this.transform.position = new Vector3(ts.x, ts.y, ts.z += (Time.deltaTime * playerMoveSpeed));
+            //	mediaPlayerCtrl.Play();
+            //             if(gameController.IsInternetMode)
+            //             {
+            //		count++;
+            //		//Debug.Log("count:" + count);
+            //		if (count % 60 == 0)
+            //		{
+            //			//Debug.Log("DownLoadViking");
+            //			httpManager.DownLoadViking();
+            //		}
+            //             }
+            //}
+            //else
+            //{
+            //	animator.SetBool("Idling", true);
+            //	mediaPlayerCtrl.Pause();
+            //}
+            if (GvrController.AppButtonDown)
+            {
+            	animator.SetTrigger("Use");
+                         //Debug.Log("GvrController.AppButtonDown");
+            }
+            //Debug.Log("?????????????????????????????????");
+            //Debug.Log("x====================x:" + mainCamera.transform.eulerAngles.x);
+            if (mainCameraTrans.eulerAngles.x > 270f && mainCameraTrans.eulerAngles.x < 360f)
+            {
+                //Debug.Log("eulerAngles.x 朝上看");
+                mediaPlayerCtrl.setDirection(7);//1
+			}
+            if (mainCameraTrans.eulerAngles.x > 0f && mainCameraTrans.eulerAngles.x < 90f)
+            {
+                //Debug.Log("eulerAngles.x 朝下看");
+                mediaPlayerCtrl.setDirection(6);//1
+			}
            
             if (GvrController.IsTouching)
             {
